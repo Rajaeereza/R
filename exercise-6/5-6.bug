@@ -1,0 +1,19 @@
+model{
+  for(i in 1:length(x1) ) {
+    x1[i] ~ dpois(lambda1)
+  }
+  for(i in 1:length(x2) ) {
+    x2[i] ~ dpois(lambda2)
+  }
+  
+  # a uniform prior for lambda1
+  lambda1 ~ dexp(0.00001)
+  # a uniform prior for lambda2
+  lambda2 ~ dexp(0.00001)
+
+  # Predicted data , given lambda1
+  y1 ~ dpois(lambda1 )
+  # Predicted data , given lambda2
+  y2 ~ dpois(lambda2 )
+
+}

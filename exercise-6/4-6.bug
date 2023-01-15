@@ -1,0 +1,11 @@
+model{
+    ## liklihood : sum of the Bernoulli process is binomial distribution
+    x ~ dbin(p,n)
+
+    # Prior: uniform
+    p ~ dbeta(1, 1)
+
+    ## postorior:  binomial
+    y ~ dbin(p,n_next)
+    
+}

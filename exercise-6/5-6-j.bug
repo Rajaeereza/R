@@ -1,0 +1,20 @@
+model{
+  #likelihood
+  for(i in 1:length(x1) ) {
+    x1[i] ~ dpois(lambda1)
+  }
+  for(i in 1:length(x2) ) {
+    x2[i] ~ dpois(lambda2)
+  }
+  
+  # a jefry prior (gama distribution with very small shape and rate) for lambda1
+  lambda1 ~ dgamma(0.0001, 0.0001)
+  # a jefry prior (gama distribution with very small shape and rate) for lambda2
+  lambda2 ~ dgamma(0.0001, 0.0001)
+
+  # Predicted data , given lambda1
+  y1 ~ dpois(lambda1)
+  # Predicted data , given lambda2
+  y2 ~ dpois(lambda2)
+
+}
